@@ -1,5 +1,6 @@
 package com.tutorials.tutorialservice.models.web;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ApiModel(value = "UpdateUserRequest", description = "Updating a user request model")
 public class UpdateUserRequest {
     @Size(min = 6, max = 20, message = "password length should not be between 6 and 20 characters")
     private String password;

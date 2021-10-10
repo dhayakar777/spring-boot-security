@@ -1,5 +1,6 @@
 package com.tutorials.tutorialservice.models.web;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ApiModel(value = "RoleRequest", description = "Creating a new role request model")
 public class RoleRequest {
 
     private String roleId;

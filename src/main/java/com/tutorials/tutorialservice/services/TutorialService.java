@@ -3,6 +3,10 @@ package com.tutorials.tutorialservice.services;
 import com.tutorials.tutorialservice.models.Tutorial;
 import com.tutorials.tutorialservice.repository.TutorialRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,13 +36,23 @@ public class TutorialService {
             return tutorialRepository.findByTitleStartingWith(title);
         }
     }
+    public Page<Tutorial> getTutorialsInPaginatedFormat(int page, int size) {
+        if (page == 0 && size == 0) {
+            Pageable defaultPaging = PageRequest.of(0, 50, Sort.Direction.DESC);
+            return tutorialRepository.findAll(defaultPaging);
+        } else {
+            Pageable customPaging = PageRequest.of(page, size, Sort.Direction.ASC);
+            return tutorialRepository.findAll(customPaging);
+        }
 
-    public Tutorial getTutorial(Long id) {
+    }
+
+    public Tutorial getTutorial(String id) {
         log.info("fetching the tutorial with id {}", id);
         return tutorialRepository.findById(id).get();
     }
 
-    public Tutorial updateTutorial(Long id, Tutorial tutorial) {
+    public Tutorial updateTutorial(String id, Tutorial tutorial) {
         Optional<Tutorial> optionalTutorial = tutorialRepository.findById(id);
         if (optionalTutorial.isPresent()) {
             log.info("Tutorial found with id {}", id);
@@ -55,7 +69,7 @@ public class TutorialService {
         }
     }
 
-    public void deleteTutorial(Long id) {
+    public void deleteTutorial(String id) {
         Optional<Tutorial> optionalTutorial = tutorialRepository.findById(id);
         if (optionalTutorial.isPresent()) {
             log.info("Tutorial found with id {}", id);

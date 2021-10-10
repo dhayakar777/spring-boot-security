@@ -1,6 +1,7 @@
 package com.tutorials.tutorialservice.models.web;
 
 import com.tutorials.tutorialservice.models.Role;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ApiModel(value = "SignUpRequest", description = "Signing up  a new  request model")
 public class SignUpRequest {
 
     private String userId;

@@ -18,7 +18,6 @@ public class JpaAuditorConfiguration {
 
        @Bean(name = "currentAuthorAuditorProvider")
        public AuditorAware<String> getCurrentAuthor() {
-           //return ()-> Optional.ofNullable("Dhaya");
            return ()-> Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication().getName());
        }
 

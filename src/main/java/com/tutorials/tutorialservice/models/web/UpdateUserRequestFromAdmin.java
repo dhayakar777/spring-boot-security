@@ -1,5 +1,6 @@
 package com.tutorials.tutorialservice.models.web;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ApiModel(value = "UpdateUserRequestFromAdmin", description = "Updating a user request from admin model")
 public class UpdateUserRequestFromAdmin {
 
     @Size(max = 40, message = "First Name length should not be grater than 40 characters")

@@ -1,6 +1,7 @@
 package com.tutorials.tutorialservice.models.web;
 
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value = "CreateUserRequest", description = "Create new user from admin model")
 public class CreateUserRequest {
 
     private String userId;

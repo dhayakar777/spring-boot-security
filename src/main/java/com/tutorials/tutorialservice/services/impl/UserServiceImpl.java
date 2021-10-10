@@ -15,6 +15,10 @@ import com.tutorials.tutorialservice.services.UserService;
 import com.tutorials.tutorialservice.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -174,9 +178,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<GetUserResponse> getAllUsers() {
-        log.info("Fetching all the users");
-        Iterable<User> all = userRepository.findAll();
+    public List<GetUserResponse> getAllUsers(Pageable pageable) {
+        log.info("Fetching all the users in paginated format");
+        Iterable<User> all ;
+       /* if(page == 0 && size == 0) {
+             Pageable defaultPaging = PageRequest.of(0, 10);
+             all = userRepository.findAll(defaultPaging);
+        } else {*/
+           // Pageable paging = PageRequest.of(page.);
+            all = userRepository.findAll(pageable);
+        /*}*/
         List<GetUserResponse> userResponseList = new ArrayList<>();
         all.iterator().forEachRemaining(user -> {
             GetUserResponse response = GetUserResponse.builder().userId(user.getUserId())

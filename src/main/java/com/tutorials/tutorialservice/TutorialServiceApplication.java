@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.*;
 
 @SpringBootApplication
-@EnableJpaAuditing
+//@EnableJpaAuditing
 public class TutorialServiceApplication {
 
     private final RolesRepository roleRepository;
