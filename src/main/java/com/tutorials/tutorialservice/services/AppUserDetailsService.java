@@ -1,8 +1,6 @@
 package com.tutorials.tutorialservice.services;
 
 import com.tutorials.tutorialservice.models.User;
-import com.tutorials.tutorialservice.models.web.CreateUserResponse;
-import com.tutorials.tutorialservice.models.web.GetUserResponse;
 import com.tutorials.tutorialservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 

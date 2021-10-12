@@ -1,6 +1,6 @@
 package com.tutorials.tutorialservice.models;
 
-import com.tutorials.tutorialservice.models.web.Roles;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

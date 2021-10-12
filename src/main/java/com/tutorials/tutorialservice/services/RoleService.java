@@ -2,7 +2,6 @@ package com.tutorials.tutorialservice.services;
 
 
 import com.tutorials.tutorialservice.models.Role;
-import com.tutorials.tutorialservice.models.User;
 import com.tutorials.tutorialservice.models.web.RoleRequest;
 import com.tutorials.tutorialservice.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;

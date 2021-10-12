@@ -2,6 +2,7 @@ package com.tutorials.tutorialservice.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.tutorials.tutorialservice.exception.UserNotFoundException;
 import com.tutorials.tutorialservice.models.User;
 import com.tutorials.tutorialservice.models.web.JwtAuthenticationResponse;
 import com.tutorials.tutorialservice.models.web.LoginRequest;
@@ -34,7 +35,7 @@ public class JwtTokenUtil implements Serializable {
 
     public JwtAuthenticationResponse generateToken(LoginRequest loginRequest) {
         Optional<User> user = userRepository.findByUserName(loginRequest.getUserName());
-        User userByUserName = user.orElseThrow(()-> new RuntimeException("User not found with given user name"));
+        User userByUserName = user.orElseThrow(()-> new UserNotFoundException("User not found with given user name"));
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
         userByUserName.getRoles().forEach(role -> {
             authorityList.add(new SimpleGrantedAuthority(role.getRoleName()));
@@ -50,7 +51,7 @@ public class JwtTokenUtil implements Serializable {
                                      collect(Collectors.toList()))
                              .sign(algorithm);
         String refreshToken = JWT.create().withSubject(userByUserName.getUserName())
-                .withExpiresAt(new Date(System.currentTimeMillis()+ REFRESH_TOKEN_VALIDITY))
+                .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_VALIDITY))
                 .withIssuer(ServletUriComponentsBuilder.fromCurrentContextPath().toUriString())
                 .sign(algorithm);
         return new JwtAuthenticationResponse(accessToken, refreshToken);

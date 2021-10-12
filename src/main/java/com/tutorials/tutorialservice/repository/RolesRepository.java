@@ -1,8 +1,7 @@
 package com.tutorials.tutorialservice.repository;
 
-import com.tutorials.tutorialservice.models.Role;
+
 import com.tutorials.tutorialservice.models.UserRole;
-import com.tutorials.tutorialservice.models.web.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
